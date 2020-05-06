@@ -356,12 +356,6 @@ public class Form extends javax.swing.JFrame {
                             Logger.getLogger(Form.class.getName()).log(Level.SEVERE, null, ex);
                             JOptionPane.showMessageDialog(rootPane, "An error has occured!\n"+ex, "Error", HEIGHT);
                         }
-                        try {
-                            Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e "+"watch -n0.2 grep [M]Hz /proc/cpuinfo", null, g);
-                        } catch (IOException ex) {
-                            Logger.getLogger(Form.class.getName()).log(Level.SEVERE, null, ex);
-                            JOptionPane.showMessageDialog(rootPane, "An error has occured!\n"+ex, "Error", HEIGHT);
-                        }
                     }else if(jRadioButton2.isSelected()){
                         try {
                             Runtime.getRuntime().exec("cmd /c start cmd.exe /K "+command, null, g);
