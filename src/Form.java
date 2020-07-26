@@ -110,6 +110,7 @@ public class Form extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         jFileChooser1.setFileFilter(new MyCustomFilter());
 
@@ -182,14 +183,30 @@ public class Form extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox2.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jCheckBox2.setText("BungeeCord/Waterfall");
+        jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox2StateChanged(evt);
+            }
+        });
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addComponent(jCheckBox2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,11 +240,12 @@ public class Form extends javax.swing.JFrame {
                                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(8, 8, 8)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27))
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(27, 27, 27))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(247, 247, 247))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,8 +273,10 @@ public class Form extends javax.swing.JFrame {
                     .addComponent(jCheckBox1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jCheckBox2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         jCheckBox1.addActionListener(new ActionListener() {
@@ -394,6 +414,20 @@ public class Form extends javax.swing.JFrame {
         g = new File(dat.get(jComboBox1.getSelectedIndex()).getAbsolutePath().replace(dat.get(jComboBox1.getSelectedIndex()).getName(), ""));
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox2StateChanged
+        if(jCheckBox2.isSelected()){
+            jSpinner1.setModel(new javax.swing.SpinnerNumberModel(64, 32, memorySize-1000, 1)); //(initial value, min, max, step)
+            jSpinner2.setModel(new javax.swing.SpinnerNumberModel(128, 48, memorySize-1000, 1)); //(initial value, min, max, step)
+        }else{
+            jSpinner1.setModel(new javax.swing.SpinnerNumberModel(((((int)memorySize*1/4)<768)?768:(int)memorySize*1/4), 768, memorySize-1000, 1)); //(initial value, min, max, step)
+            jSpinner2.setModel(new javax.swing.SpinnerNumberModel(((((int)memorySize*3/4)>(memorySize-1000)?(memorySize-1000):(int)memorySize*3/4)), 768, memorySize-1000, 1)); //(initial value, min, max, step)
+        }
+    }//GEN-LAST:event_jCheckBox2StateChanged
+
     public static void main(String args[]) {
         try{
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -424,6 +458,7 @@ public class Form extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
